@@ -62,7 +62,12 @@
   color: #6b7280;
   cursor: pointer;
   font-weight: bold;
-  float: left;
+  display: block;      /* Forza il bottone ad andare a capo da solo */
+  text-align: left;    /* Allinea il testo a sinistra */
+  margin-bottom: 15px; /* Crea spazio tra il bottone e il titolo sotto */
+  padding: 0;
+  font-size: 1rem;
+  transition: color 0.2s;
 }
 
 .card-display {
@@ -90,8 +95,8 @@
   font-weight: bold;
 }
 
-.btn-action:hover {
-  background: #059669;
+.btn-back:hover {
+  color: #1f2937; /* Si scurisce leggermente al passaggio del mouse */
 }
 
 /* ==========================================================================
