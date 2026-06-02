@@ -1,0 +1,25 @@
+robe installate:: 
+Firebase      per i database
+Nodes.js      https://nodejs.org/en/download
+i18n          npm install i18next react-i18next      x lingue + aggiungere file i18n.js con script generato
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+per vedere l'anteprima codice terminale e poi control+link:       npm run dev
+
+
+
+
+
+Su Firebase
+per pubblicare gli aggiornamenti mandare da terminale : npm run build
+                                                        firebase deploy
+
+per disabilitare il sito dal terminale :                firebase hosting:disable

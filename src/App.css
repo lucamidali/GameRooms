@@ -1,184 +1,337 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ==========================================================================
+   1. STRUTTURA GENERALE & DASHBOARD (HOME)
+   ========================================================================== */
+.app-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+.dashboard h1 {
+  color: #1e1b4b; /* Blu notte molto scuro per massima leggibilità */
+  font-size: 2.5rem;
+  font-weight: 800;
 }
 
-#center {
+.game-grid {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 15px;
+  margin-top: 30px;
 }
 
-#next-steps {
+.game-card {
+  padding: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #111827; /* Forza il testo scuro anziché farlo sbiadire */
+  border: none;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-card:hover {
+  background-color: #4f46e5;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   2. CONTENITORI COMUNI DEI GIOCHI
+   ========================================================================== */
+.game-room {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.game-room h2 {
+  color: #1f2937; /* Grigio antracite per i titoli dei giochi */
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.btn-back {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  font-weight: bold;
+  float: left;
+}
+
+.card-display {
+  background: #f9fafb;
+  border: 2px dashed #e5e7eb;
+  padding: 40px;
+  border-radius: 12px;
+  margin: 20px 0;
+  min-height: 100px;
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #1f2937;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.btn-action {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-#next-steps ul {
+.btn-action:hover {
+  background: #059669;
+}
+
+/* ==========================================================================
+   3. GIOCO: TABOO
+   ========================================================================== */
+.taboo-card {
+  background: #ffffff;
+  border: 3px solid #e11d48;
+  border-radius: 16px;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 320px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.main-word {
+  color: #e11d48; /* Testo rosso scuro, visibile e d'impatto */
+  background-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 10px 0 20px 0;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+.forbidden-container h4 {
+  color: #374151; /* Grigio scuro deciso */
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 15px;
+}
+
+.forbidden-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.forbidden-item {
+  background: #fef2f2;
+  color: #991b1b;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+  text-transform: capitalize;
+}
+
+/* ==========================================================================
+   4. GIOCO: NOMI, COSE, CITTÀ
+   ========================================================================== */
+.lettera-card {
+  background: #ffffff;
+  border: 3px solid #3b82f6;
+  border-radius: 16px;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.lettera-display {
+  font-size: 5rem;
+  font-weight: 900;
+  color: #3b82f6;
+  background: #eff6ff;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 4px solid #3b82f6;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.categorie-container h4 {
+  color: #374151;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+
+.categorie-grid {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  justify-content: center;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.categoria-tag {
+  background: #f3f4f6;
+  color: #1f2937;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid #e5e7eb;
 }
 
-.ticks {
-  position: relative;
-  width: 100%;
+/* ==========================================================================
+   5. GIOCO: LANCIO DEI DADI (AGGIORNATO)
+   ========================================================================== */
+.dadi-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+.btn-control {
+  background-color: #f3f4f6;
+  border: 2px solid #d1d5db;
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.btn-control:hover:not(:disabled) {
+  background-color: #3b82f6; /* Azzurro al passaggio del mouse */
+  color: white;
+  border-color: #3b82f6;
+}
+
+.btn-control:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.dadi-count {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #4b5563;
+  min-width: 80px;
+}
+
+.dadi-container {
+  background: #f0fdf4; /* Sfondo leggermente verdino/azzurrino pulito */
+  border: 2px dashed #3b82f6; /* Bordo azzurro tratteggiato */
+  border-radius: 16px;
+  padding: 30px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Griglia limitata per contenere esattamente 3 dadi larghi per fila */
+.dadi-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 280px; /* Stringe l'area costringendo il 4°, 5° e 6° dado ad andare a capo */
+  margin: 0 auto;
+}
+
+/* Faccia del dado Azzurra stile 3D piatto */
+.dado-face {
+  width: 75px;
+  height: 75px;
+  background-color: #e0f2fe; /* Bellissimo azzurro cielo chiaro di sfondo */
+  border: 3px solid #0369a1; /* Bordo azzurro scuro profondo */
+  border-radius: 14px;
+  box-shadow: 0 5px 0px #bae6fd, 0 10px 10px rgba(3, 105, 161, 0.15); /* Ombra 3D azzurrata */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 8px;
+  gap: 4px;
+  box-sizing: border-box;
+  transition: transform 0.1s;
+}
+
+/* Pallini del dado Blu Scuro per contrastare con l'azzurro */
+.pallino {
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.pallino.attivo {
+  background-color: #0369a1; /* Colore dei punti coordinato al bordo */
+}
+
+.dadi-totale {
+  margin: 15px 0;
+  font-size: 1.3rem;
+  color: #1f2937;
+}
+
+.dadi-totale span {
+  color: #3b82f6; /* Totale azzurro coordinato */
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.btn-action {
+  background: #3b82f6; /* Pulsante principale azzurro */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-action:hover {
+  background: #2563eb;
+}
+
+/* ==========================================================================
+   6. ANIMAZIONI
+   ========================================================================== */
+.shaking {
+  animation: rollAnimation 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes rollAnimation {
+  0% { transform: translate(2px, 1px) rotate(0deg) scale(0.95); }
+  20% { transform: translate(-3px, -2px) rotate(-15deg); }
+  40% { transform: translate(-1px, 3px) rotate(15deg); }
+  60% { transform: translate(3px, -1px) rotate(-25deg) scale(1.05); }
+  80% { transform: translate(-2px, 2px) rotate(25deg); }
+  100% { transform: translate(1px, -2px) rotate(0deg) scale(1); }
 }
