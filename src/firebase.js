@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Sostituisci questo oggetto con quello fornito dalla tua console Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBbf1qJXfhTgSX1LYIUYOb3wwPqCsf18zA",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "gamerooms-bd483.firebaseapp.com",
   projectId: "gamerooms-bd483",
   storageBucket: "gamerooms-bd483.firebasestorage.app",

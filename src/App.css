@@ -100,7 +100,7 @@
 }
 
 /* ==========================================================================
-   3. GIOCO: TABOO
+   3. GIOCO: TABOO (STILE BALLOON VERDE)
    ========================================================================== */
 .taboo-card {
   background: #ffffff;
@@ -110,17 +110,40 @@
   margin: 20px auto;
   max-width: 320px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  container-type: inline-size; 
 }
 
 .main-word {
-  color: #e11d48; /* Testo rosso scuro, visibile e d'impatto */
-  background-color: transparent;
-  font-size: 2.5rem;
+  color: #111827;            /* Testo nero (Grigio scurissimo charcoal per miglior contrasto) */
+  background-color: #d1fae5; /* Sfondo verde chiaro (Soft Emerald) */
   font-weight: 900;
   text-transform: uppercase;
-  margin: 10px 0 20px 0;
-  padding: 0;
+  margin: 10px auto 25px auto;
+  padding: 12px 20px;        /* Spazio interno per dare l'effetto balloon */
+  border-radius: 50px;       /* Arrotonda completamente i lati a forma di pillola/balloon */
   letter-spacing: 1px;
+  text-align: center;
+  display: inline-block;     /* Permette al balloon di stringersi intorno alla parola */
+  width: auto;               /* Evita che prenda tutta la larghezza se la parola è corta */
+  max-width: 100%;           /* Ma non esce dalla card */
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); /* Leggero effetto profondità dentro il balloon */
+}
+
+/* 1. SE È UNA PAROLA SINGOLA LUNGA */
+.main-word.single-word {
+  font-size: min(2.2rem, 10cqw); /* Leggermente ridimensionato per compensare il padding del balloon */
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* 2. SE SONO PIÙ PAROLE */
+.main-word.multi-word {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: 16px;       /* Se va su due righe, un raggio minore sta meglio visivamente */
 }
 
 .forbidden-container h4 {

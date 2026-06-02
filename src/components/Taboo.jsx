@@ -15,12 +15,19 @@ export default function Taboo({ onBack }) {
     <div className="game-room">
       <button className="btn-back" onClick={onBack}>← Torna ai Giochi</button>
       <h2>🚫 Taboo</h2>
-      <p>Fai indovinare la parola in rosso senza pronunciare le parole vietate!</p>
+      <p>Fai indovinare la parola nel balloon verde senza pronunciare le parole vietate!</p>
       
       {cartaAttuale ? (
         /* Se c'è una carta pescata, mostra la struttura completa */
         <div className="taboo-card">
-          <h3 className="main-word">{cartaAttuale.parola}</h3>
+          
+          {/* Contenitore per mantenere il balloon verde perfettamente centrato */}
+          <div style={{ textAlign: 'center' }}>
+            {/* Controlla se la parola contiene spazi per assegnare la classe corretta */}
+            <h3 className={`main-word ${cartaAttuale.parola.includes(' ') ? 'multi-word' : 'single-word'}`}>
+              {cartaAttuale.parola}
+            </h3>
+          </div>
           
           <div className="forbidden-container">
             <h4>PAROLE VIETATE</h4>
