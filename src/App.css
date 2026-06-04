@@ -168,22 +168,43 @@ body {
   letter-spacing: 0.5px;         /* Stringe leggermente lo spazio tra le lettere */
 }
 
+/* FORZA IL TESTO NERO PER TUTTI I TESTI DI STATO DENTRO LE CARD BIANCHE */
+.card-display h3,
+.taboo-card h3,
+.lettera-card h3 {
+  color: #0f172a !important;   /* Nero ardesia profondo per i titoli interni (es. Pronto per iniziare?) */
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.card-display p,
+.taboo-card p,
+.lettera-card p {
+  color: #334155 !important;   /* Nero/grigio antracite per le descrizioni interne (es. Clicca sul bottone...) */
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
 /* ==========================================================================
    3. GIOCO: TABOO (STILE BALLOON VERDE)
    ========================================================================== */
 .taboo-card {
-  background: #ffffff;
-  border: 3px solid #e11d48;
+  background: #ffffff;         /* Mantiene la card bianca per far risaltare il balloon verde */
+  border: 1px solid #f1f5f9;   /* Rimosso bordo rosso (3px solid #e11d48) per uniformità con gli altri giochi */
   border-radius: 16px;
   padding: 25px;
   margin: 20px auto;
   max-width: 320px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); /* Ombra accentuata per fluttuare sul blu scuro */
   container-type: inline-size; 
+  box-sizing: border-box;
 }
 
 .main-word {
-  color: #111827;            /* Testo nero (Grigio scurissimo charcoal per miglior contrasto) */
+  color: #111827;            /* Testo nero charcoal per massimo contrasto dentro il balloon */
   background-color: #d1fae5; /* Sfondo verde chiaro (Soft Emerald) */
   font-weight: 900;
   text-transform: uppercase;
@@ -199,11 +220,17 @@ body {
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); /* Leggero effetto profondità dentro il balloon */
 }
 
-/* 1. SE È UNA PAROLA SINGOLA LUNGA */
+/* 1. SE È UNA PAROLA SINGOLA NORMALE */
 .main-word.single-word {
-  font-size: min(2.2rem, 10cqw); /* Leggermente ridimensionato per compensare il padding del balloon */
+  font-size: min(2.2rem, 10cqw); 
   white-space: nowrap;
   overflow: visible;
+}
+
+/* NUOVO: SE LA PAROLA SINGOLA È MOLTO LUNGA (Es. FRECCIAROSSA) */
+.main-word.single-word.long-word {
+  font-size: min(1.5rem, 7cqw);  /* Riduce il font per tenerlo dentro i margini */
+  letter-spacing: 0.5px;
 }
 
 /* 2. SE SONO PIÙ PAROLE */
@@ -216,11 +243,12 @@ body {
 }
 
 .forbidden-container h4 {
-  color: #374151; /* Grigio scuro deciso */
-  font-size: 1rem;
-  font-weight: 700;
+  color: #e11d48;            /* Rosso acceso per il titolo "PAROLE VIETATE", molto più evidente */
+  font-size: 0.9rem;
+  font-weight: 800;
   letter-spacing: 1.5px;
   margin-bottom: 15px;
+  text-transform: uppercase;
 }
 
 .forbidden-list {
@@ -230,35 +258,37 @@ body {
 }
 
 .forbidden-item {
-  background: #fef2f2;
-  color: #991b1b;
-  font-size: 1.2rem;
-  font-weight: 600;
+  background: #fef2f2;       /* Sfondo rossastro chiarissimo per richiamare il divieto */
+  color: #991b1b;            /* Rosso scuro intenso per una leggibilità perfetta dentro la card bianca */
+  font-size: 1.25rem;        /* Leggermente ingrandito per leggerlo a colpo d'occhio */
+  font-weight: 700;          /* Testo più marcato */
   margin: 8px 0;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
   border: 1px solid #fee2e2;
-  text-transform: capitalize;
+  text-transform: uppercase; /* Trasformato in tutto maiuscolo (stile Taboo classico) */
+  letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
    4. GIOCO: NOMI, COSE, CITTÀ
    ========================================================================== */
 .lettera-card {
-  background: #ffffff;
-  border: 3px solid #3b82f6;
+  background: #ffffff;         /* Rimane bianca per far risaltare la lettera e i tag */
+  border: 1px solid #f1f5f9;   /* Sostituito il bordo blu (3px solid #3b82f6) con un filo grigio chiaro pulito */
   border-radius: 16px;
   padding: 25px;
   margin: 20px auto;
   max-width: 400px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); /* Ombra accentuata per dare profondità sul blu scuro */
+  box-sizing: border-box;
 }
 
 .lettera-display {
   font-size: 5rem;
   font-weight: 900;
-  color: #3b82f6;
-  background: #eff6ff;
+  color: #2563eb;              /* Un blu leggermente più intenso e saturo per staccare sullo sfondo chiaro */
+  background: #eff6ff;         /* Sfondo azzurrino morbido circolare */
   width: 120px;
   height: 120px;
   margin: 0 auto 20px auto;
@@ -266,35 +296,36 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  border: 4px solid #3b82f6;
+  border: 4px solid #2563eb;   /* Uniformato con il colore della lettera */
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 
 .categorie-container h4 {
-  color: #374151;
+  color: #1e293b;              /* Grigio scuro ardesia deciso (era #374151, ora molto più visibile) */
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;            /* Testo più marcato per il titolo "CATEGORIE" */
   letter-spacing: 1.5px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;   /* In maiuscolo per dare lo stile da gioco da tavolo */
 }
 
 .categorie-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;                   /* Leggermente aumentato lo spazio tra i tag per respirare su mobile */
   justify-content: center;
 }
 
 .categoria-tag {
-  background: #f3f4f6;
-  color: #1f2937;
-  padding: 6px 14px;
+  background: #f1f5f9;         /* Sfondo grigio/azzurro chiarissimo e pulito */
+  color: #0f172a;              /* Testo quasi nero (Slate 900) per leggerlo a colpo d'occhio senza sforzo */
+  padding: 8px 16px;           /* Aumentato leggermente il padding per renderli più cicciotti e facili da tappare */
   border-radius: 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border: 1px solid #e5e7eb;
+  font-size: 1rem;             /* Leggermente ingrandito */
+  font-weight: 700;            /* Passato a Bold deciso per massimizzare il contrasto */
+  border: 1px solid #e2e8f0;   /* Bordino grigio di definizione */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
-
 /* ==========================================================================
    5. GIOCO: LANCIO DEI DADI (AGGIORNATO)
    ========================================================================== */
@@ -393,7 +424,7 @@ body {
 .dadi-totale {
   margin: 15px 0;
   font-size: 1.3rem;
-  color: #1f2937;
+  color: #ffffff;
 }
 
 .dadi-totale span {
