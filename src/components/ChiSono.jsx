@@ -29,16 +29,19 @@ export default function ChiSono({ onBack }) {
     }, 80);
   };
 
-  // Funzione ricalibrata: abbassiamo i tetti massimi (rem e vh) per non toccare mai i bordi
+  // Funzione ricalibrata per font giganti adattati alla nuova card responsiva
   const ottieniDimensioneFont = (testo) => {
-    if (inCaricamento) return 'min(5vw, 1.5rem)';
+    if (inCaricamento) return 'min(7vw, 2.2rem)';
     
     const lunghezza = testo.length;
-    if (lunghezza > 16) return 'min(4.2vh, 1.3rem)';   // Per stringhe lunghissime con spazi
-    if (lunghezza > 12) return 'min(4.8vh, 1.6rem)';   // Per "MANUEL NEUER", "BRUNO FERNANDES"
-    if (lunghezza > 8) return 'min(6vh, 2.1rem)';      // Per nomi medi
-    return 'min(8vh, 2.8rem)';                         // Per nomi corti (es. GOKU, SHREK)
+    if (lunghezza > 16) return 'min(6.5vh, 2.2rem)'; // Nomi lunghissimi
+    if (lunghezza > 12) return 'min(7.5vh, 2.7rem)'; // Nomi medio-lunghi
+    if (lunghezza > 8) return 'min(9vh, 3.5rem)';    // Nomi medi
+    return 'min(11vh, 4.5rem)';                      // Nomi corti
   };
+
+  // Controlliamo se il gioco è effettivamente iniziato (se è stato pescato qualcosa)
+  const giocoIniziato = slotText !== 'PRONTO?';
 
   return (
     <div className="game-room" style={{
@@ -46,39 +49,60 @@ export default function ChiSono({ onBack }) {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'space-between',
-      minHeight: '82vh',
-      padding: '20px',
+      minHeight: '88vh', // Sfrutta meglio l'altezza verticale dello schermo
+      padding: '15px 20px',
       boxSizing: 'border-box'
     }}>
       
       {/* INTESTAZIONE */}
-      <div style={{ width: '100%', textAlign: 'center' }}>
-        <button className="btn-back" onClick={onBack} style={{ marginBottom: '10px' }}>
-          ← Torna ai Giochi
-        </button>
-        <h2>👑 Chi Sono?</h2>
-        <p>Pesca e metti il telefono in verticale sulla fronte!</p>
-      </div>
+    <div style={{ width: '100%', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <button className="btn-back" onClick={onBack} style={{ marginBottom: '5px' }}>
+        ← Torna ai Giochi
+    </button>
+    <h2 style={{ margin: '5px 0' }}>👑 Chi Sono?</h2>
+    
+    {/* CONTENITORE CENTRATO PER LE SCRITTE INIZIALI */}
+    {!giocoIniziato && (
+        <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        width: '100%',
+        textAlign: 'center' 
+        }}>
+        <p style={{ margin: '4px 0', width: '100%' }}>
+            Pesca e metti il telefono in verticale sulla fronte!
+        </p>
+        <p style={{ margin: '4px 0', fontSize: '0.85rem', opacity: 0.8, width: '100%' }}>
+            Blocca la rotazione del telefono per vedere il personaggio!
+        </p>
+        </div>
+    )}
+    </div>
       
-      {/* AREA CARD BIANCA */}
+      {/* AREA CARD BIANCA ENORME */}
       <div style={{
         background: '#ffffff',
-        borderRadius: '20px',
-        width: '240px', 
-        height: '360px',
+        borderRadius: '24px',
+        // Prende l'80% della larghezza e il 58% dell'altezza dello schermo del dispositivo
+        width: '80vw', 
+        height: '58vh', 
+        maxWidth: '340px',  // Limiti massimi di sicurezza per schermi enormi
+        maxHeight: '520px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.25)',
+        boxShadow: '0 15px 35px rgba(0, 0, 0, 0.3)',
         border: '2px solid #f1f5f9',
-        padding: '25px 15px', // Aumentato il padding verticale interno di sicurezza
+        padding: '20px',
         boxSizing: 'border-box',
         overflow: 'hidden',
         position: 'relative',
-        margin: '15px 0'
+        margin: '10px 0'
       }}>
         
-        {/* IL TESTO DEL NOME */}
+        {/* IL TESTO DEL NOME RUOTATO */}
         <span style={{
           color: inCaricamento ? '#64748b' : '#0f172a',
           fontSize: ottieniDimensioneFont(slotText),
@@ -90,10 +114,10 @@ export default function ChiSono({ onBack }) {
           filter: inCaricamento ? 'blur(1px)' : 'none',
           
           transform: 'rotate(90deg)',
-          // Ridotta la larghezza utile massima per forzarlo a stare dentro i margini bianchi
-          maxWidth: '300px', 
+          // Adatta la larghezza virtuale del testo all'altezza reale interna della card
+          maxWidth: '52vh', 
           display: 'block',
-          lineHeight: '1', // Evita che lo spazio sopra/sotto il font crei offset invisibili
+          lineHeight: '1',
           
           transition: 'font-size 0.12s ease, filter 0.1s ease'
         }}>
@@ -103,14 +127,15 @@ export default function ChiSono({ onBack }) {
       </div>
 
       {/* BOTTONE DI LANCIO */}
-      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '5px' }}>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '5px' }}>
         <button 
           className="btn-action" 
           onClick={estraiPersonaggio}
           disabled={inCaricamento}
           style={{ 
             width: '100%',
-            maxWidth: '300px',
+            maxWidth: '280px',
+            padding: '14px 0', // Pulsante leggermente più compatto per lasciare spazio alla card
             opacity: inCaricamento ? 0.6 : 1,
             cursor: inCaricamento ? 'not-allowed' : 'pointer'
           }}
