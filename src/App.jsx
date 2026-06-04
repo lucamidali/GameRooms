@@ -88,7 +88,7 @@ export default function App() {
               lineHeight: '1.2' // Stringe l'altezza complessiva delle righe di testo
             }}>
               <span style={{ fontWeight: '500' }}>Created by Mida</span>
-              <span style={{ marginTop: '3px', fontSize: '0.7rem' }}>V. 1.2.0</span>  /=====================================  Versione
+              <span style={{ marginTop: '3px', fontSize: '0.7rem' }}>V. 1.2.0</span>  
             </div>
           </div>
         );
