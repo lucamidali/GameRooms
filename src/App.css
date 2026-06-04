@@ -1,18 +1,38 @@
 /* ==========================================================================
    1. STRUTTURA GENERALE & DASHBOARD (HOME)
    ========================================================================== */
+body {
+  background-color: #0f172a; /* Blu scuro profondo - Fisso e di default */
+  color: #f8fafc;            /* Testo chiaro di default */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;             /* Centra l'app-container nello schermo */
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .app-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: 600px;
+  width: 100%;               /* Forza l'applicazione a prendersi lo spazio necessario */
+  max-width: 600px;          /* Gli impedisce di allargarsi troppo su PC */
   margin: 40px auto;
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .dashboard h1 {
-  color: #1e1b4b; /* Blu notte molto scuro per massima leggibilità */
-  font-size: 2.5rem;
+  color: #ffffff;            /* Bianco splendente */
+  
+  /* Usiamo le Viewport Width (vw) calcolate sulla larghezza dello schermo, 
+     così non rischiamo il collasso del contenitore */
+  font-size: min(2.8rem, 8.5vw); 
+  
   font-weight: 800;
+  white-space: nowrap;       /* Impedisce di andare a capo */
+  overflow: visible;
+  margin-bottom: 20px;
 }
 
 .game-grid {
@@ -20,18 +40,25 @@
   flex-direction: column;
   gap: 15px;
   margin-top: 30px;
+  width: 100%;               /* Assicura che la griglia occupi tutto lo spazio della card */
 }
 
 .game-card {
+  display: flex;             /* Allinea l'icona e il testo in orizzontale */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: 20px;
   font-size: 1.3rem;
   font-weight: bold;
-  color: #111827; /* Forza il testo scuro anziché farlo sbiadire */
+  color: #111827;            /* Testo scuro sui bottoni grigi */
   border: none;
   border-radius: 12px;
   background-color: #f3f4f6;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 100%;               /* I bottoni tornano larghi e cicciotti */
+  box-sizing: border-box;
 }
 
 .game-card:hover {
@@ -44,59 +71,101 @@
    2. CONTENITORI COMUNI DEI GIOCHI
    ========================================================================== */
 .game-room {
-  background: #ffffff;
-  padding: 30px;
+  background: transparent;     /* Rimosso il bianco: ora si fonde con il blu scuro del body */
+  padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .game-room h2 {
-  color: #1f2937; /* Grigio antracite per i titoli dei giochi */
+  color: #ffffff;              /* Bianco puro splendente per i titoli dei giochi */
   font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 10px;
+}
+
+/* Testo descrittivo del gioco sotto il titolo */
+.game-room p {
+  color: #cbd5e1;              /* Grigio chiaro seta per massima leggibilità sul blu */
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0 auto 20px auto;
+  max-width: 450px;
 }
 
 .btn-back {
   background: none;
   border: none;
-  color: #6b7280;
+  color: #94a3b8;              /* Grigio più chiaro, visibile sul blu */
   cursor: pointer;
   font-weight: bold;
-  display: block;      /* Forza il bottone ad andare a capo da solo */
-  text-align: left;    /* Allinea il testo a sinistra */
-  margin-bottom: 15px; /* Crea spazio tra il bottone e il titolo sotto */
-  padding: 0;
+  display: inline-block;       
+  text-align: left;    
+  margin-bottom: 15px; 
+  padding: 5px 0;
   font-size: 1rem;
   transition: color 0.2s;
 }
 
+.btn-back:hover {
+  color: #ffffff;              /* Diventa bianco puro quando ci passi sopra */
+}
+
+/* La tessera centrale dove esce la parola */
 .card-display {
-  background: #f9fafb;
-  border: 2px dashed #e5e7eb;
-  padding: 40px;
-  border-radius: 12px;
-  margin: 20px 0;
-  min-height: 100px;
+  background: #ffffff;         /* Mantiene lo sfondo bianco per far risaltare il balloon verde */
+  border: 1px solid #f1f5f9;   /* Bordo grigio chiarissimo e pulito (via il tratteggio) */
+  padding: 35px 20px;
+  border-radius: 16px;
+  margin: 20px auto;
+  max-width: 320px;            /* Evita che la card si allarghi troppo su schermi grandi */
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #1f2937;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata sul fondo scuro */
+  box-sizing: border-box;
 }
 
 .btn-action {
-  background: #10b981;
+  background: #10b981;         /* Verde smeraldo splendente */
   color: white;
   border: none;
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 1.2rem;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+  width: 100%;                 /* Si adatta alla larghezza su mobile */
+  max-width: 320px;            /* Allineato alla larghezza della card */
+  margin-top: 10px;
 }
 
-.btn-back:hover {
-  color: #1f2937; /* Si scurisce leggermente al passaggio del mouse */
+.btn-action:hover {
+  background: #059669;         /* Verde leggermente più scuro al passaggio */
+  transform: translateY(-2px); /* Effetto sollevamento */
+}
+
+/* Animazione di ingresso per le stanze */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. SE È UNA PAROLA SINGOLA LUNGA */
+.main-word.single-word {
+  font-size: min(2.2rem, 10cqw); 
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* NUOVO: SE LA PAROLA SUPERA I 9 CARATTERI, RIDUCI IL FONT SOLO PER LEI */
+.main-word.single-word.long-word {
+  font-size: min(1.5rem, 7cqw); /* Riduce il font-size per farla stare perfettamente nel balloon */
+  letter-spacing: 0.5px;         /* Stringe leggermente lo spazio tra le lettere */
 }
 
 /* ==========================================================================
