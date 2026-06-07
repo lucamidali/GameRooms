@@ -21,7 +21,7 @@ export default function Pictionary({ onBack }) {
     <div className="game-room">
       <button className="btn-back" onClick={onBack}>← Torna ai Giochi</button>
       <h2>🎨 Pictionary</h2>
-      <p>Pesca una parola nel balloon verde e disegnala senza parlare o scrivere!</p>
+      <p>Pesca una parola e disegnala senza parlare o scrivere!</p>
       
       <div className="card-display" style={{ background: '#ffffff', border: '1px solid #f1f5f9', borderRadius: '16px', padding: '25px', margin: '20px auto', maxWidth: '320px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
         {parola ? (

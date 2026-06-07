@@ -15,7 +15,7 @@ export default function Taboo({ onBack }) {
     <div className="game-room">
       <button className="btn-back" onClick={onBack}>← Torna ai Giochi</button>
       <h2>🚫 Taboo</h2>
-      <p>Fai indovinare la parola nel balloon verde senza pronunciare le parole vietate!</p>
+      <p>Fai indovinare la parola verde senza pronunciare le parole vietate!</p>
       
       {cartaAttuale ? (
         /* Se c'è una carta pescata, mostra la struttura completa */
