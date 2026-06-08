@@ -1,8 +1,9 @@
 // src/data/wordsBandiere.js
 
-// Lista di nazioni e codici per il gioco "Indovina la Bandiera"  200 bandiere da tutto il mondo, suddivise per continente
-
+// Lista di nazioni e codici per il gioco "Indovina la Bandiera"
 const wordsBandiere = [
+
+  /*
   // --- EUROPA (45) ---
   { nazione: 'ITALIA', code: 'it' },
   { nazione: 'FRANCIA', code: 'fr' },
@@ -107,7 +108,6 @@ const wordsBandiere = [
   { nazione: 'ARABIA SAUDITA', code: 'sa' },
   { nazione: 'EMIRATI ARABI UNITI', code: 'ae' },
   { nazione: 'QATAR', code: 'qa' },
-  //{ nazione: 'ISRAELE', code: 'il' },
   { nazione: 'PALESTINA', code: 'ps' },
   { nazione: 'GIORDANIA', code: 'jo' },
   { nazione: 'THAILANDIA', code: 'th' },
@@ -174,8 +174,6 @@ const wordsBandiere = [
   { nazione: 'SUDAN', code: 'sd' },
   { nazione: 'REP. DEMOCRATICA DEL CONGO', code: 'cd' },
   { nazione: 'MOZAMBICO', code: 'mz' },
-  { nazione: 'COSTA D\'AVORIO', code: 'ci' },
-  { nazione: 'COSTE RICA', code: 'cr' },
   { nazione: 'BURKINA FASO', code: 'bf' },
   { nazione: 'NIGER', code: 'ne' },
   { nazione: 'CIAD', code: 'td' },
@@ -203,7 +201,7 @@ const wordsBandiere = [
   { nazione: 'FIJI', code: 'fj' },
   { nazione: 'PAPUA NUOVA GUINEA', code: 'pg' },
   { nazione: 'SAMOA', code: 'ws' },
-  { nazione: 'SOLOMONE', code: 'sb' },
+  { nazione: 'ISOLE SALOMONE', code: 'sb' },
   { nazione: 'VANUATU', code: 'vu' },
   { nazione: 'TONGA', code: 'to' },
   { nazione: 'MICRONESIA', code: 'fm' },
@@ -213,7 +211,71 @@ const wordsBandiere = [
   { nazione: 'NAURU', code: 'nr' },
   { nazione: 'TUVALU', code: 'tv' },
   { nazione: 'POLINESIA FRANCESE', code: 'pf' },
-  { nazione: 'NUOVA CALEDONIA', code: 'nc' }
+  { nazione: 'NUOVA CALEDONIA', code: 'nc' },
+
+  */
+
+  // --- LIVELLO ESPERTO: PAESI POCO CONOSCIUTI E ISOLE REMOTE ---
+  { nazione: 'BRUNEI', code: 'bn' },
+  { nazione: 'GUINEA BISSAU', code: 'gw' },
+  { nazione: 'SVALBARD E JAN MAYEN', code: 'sj' },
+  { nazione: 'ISOLE FALKLAND', code: 'fk' },
+  { nazione: 'SÃO TOMÉ E PRÍNCIPE', code: 'st' },
+  { nazione: 'COMORE', code: 'km' },
+  { nazione: 'GIBUTI', code: 'dj' },
+  { nazione: 'GUINEA EQUATORIALE', code: 'gq' },
+
+  // --- LIVELLO DIVINITÀ STORICA (STATI SCOMPARSI E ORIGINALI A PIÙ LETTERE) ---
+  { nazione: 'IMPERO TEDESCO (1871-1918)', code: 'de-1900' }, 
+  { nazione: 'GERMANIA EST (DDR)', code: 'ddr' }, 
+  { nazione: 'UNIONE SOVIETICA (URSS)', code: 'su' }, 
+  { nazione: 'JUGOSLAVIA', code: 'yu' }, 
+  { nazione: 'ANTILLE OLANDESI', code: 'an' }, 
+  { nazione: 'ZAIRE (1971-1997)', code: 'zr' }, 
+  { nazione: 'LIBIA DI GHEDDAFI (1977-2011)', code: 'ly-1977' },
+  { nazione: 'UNIONE SOVIETICA (URSS)', code: 'su' }, 
+  { nazione: 'JUGOSLAVIA', code: 'yu' }, 
+  { nazione: 'SERBIA E MONTENEGRO (1992-2006)', code: 'cs' },
+  { nazione: 'ANTILLE OLANDESI', code: 'an' }, 
+  { nazione: 'ZAIRE (1971-1997)', code: 'zr' }, 
+  { nazione: 'GERMANIA EST (DDR)', code: 'ddr' }, 
+  { nazione: 'IMPERO TEDESCO (1871-1918)', code: 'de-1900' }, 
+  { nazione: 'LIBIA DI GHEDDAFI (1977-2011)', code: 'ly-1977' },
+  { nazione: 'REGNO D\'ITALIA (1861-1946)', code: 'it-regno' },
+  { nazione: 'IMPERO QING (CINA 1889-1912)', code: 'cn-qing' },
+  { nazione: 'FRANCIA VICHY (1940-1944)', code: 'fr-vichy' },
+  { nazione: 'SPAGNA FRANCHISTA (1945-1977)', code: 'es-franchi' },
+
+  // --- REGIONI SPECIALI E TERRITORI AUTONOMI ---
+  { nazione: 'ISOLE ÅLAND', code: 'ax' },
+  { nazione: 'ISOLE FAROE', code: 'fo' },
+  { nazione: 'GIBILTERRA', code: 'gi' },
+  { nazione: 'GUAM', code: 'gu' },
+  { nazione: 'REUNION', code: 're' },
+  { nazione: 'MARTINICA', code: 'mq' },
+  { nazione: 'GUADALUPA', code: 'gp' },
+  { nazione: 'MAYOTTE', code: 'yt' },
+  { nazione: 'SAINT BARTHÉLEMY', code: 'bl' },
+  { nazione: 'SAINT MARTIN', code: 'mf' },
+  { nazione: 'SANT\'ELENA', code: 'sh' },
+  { nazione: 'ISOLE COOK', code: 'ck' },
+  { nazione: 'NIUE', code: 'nu' },
+  { nazione: 'TOKELAU', code: 'tk' },
+  { nazione: 'WALLIS E FUTUNA', code: 'wf' },
+  { nazione: 'ISOLE MARIANNE SETTENTRIONALI', code: 'mp' },
+  { nazione: 'SAMOA AMERICANE', code: 'as' },
+  { nazione: 'CURAÇAO', code: 'cw' },
+  { nazione: 'SINT MAARTEN', code: 'sx' },
+  { nazione: 'MONTSERRAT', code: 'ms' },
+
+  // --- DIPENDENZE ANTICHE E ISOLE SPERDUTE ---
+  { nazione: 'TERRE AUSTRALI E ANTARTICHE FRANCESI', code: 'tf' },
+  { nazione: 'GEORGIA DEL SUD E ISOLE SANDWICH', code: 'gs' },
+  { nazione: 'ISOLE PITCAIRN', code: 'pn' },
+  { nazione: 'ISOLE COCOS (KEELING)', code: 'cc' },
+  { nazione: 'ISOLA DI NATALE', code: 'cx' },
+  { nazione: 'SAINT-PIERRE E MIQUELON', code: 'pm' },
+  { nazione: 'ISOLA DI MAN', code: 'im' }
 ];
 
 export default wordsBandiere;
