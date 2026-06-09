@@ -17,34 +17,29 @@ export default function GiraRuota({ onBack }) {
   const [colori, setColori] = useState(COLORI_PREDEFINITI.slice(0, 5));
   const [rotazione, setRotazione] = useState(0);
   const [inGiramento, setInGiramento] = useState(false);
-  // Gestiamo la durata dell'animazione nello stato per renderla randomica
   const [durataAnimazione, setDurataAnimazione] = useState(3);
 
   const giraRuota = () => {
     if (inGiramento) return;
     setInGiramento(true);
 
-    // 1. Durata della frenata del tutto casuale (tra 1.5 e 3.5 secondi)
     const tempoFrenataCasuale = Math.random() * 2 + 1.5; 
-    const durataTotaleDellaRullata = 1 + tempoFrenataCasuale; // 1 secondo fisso a palla + frenata
+    const durataTotaleDellaRullata = 1 + tempoFrenataCasuale; 
     
     setDurataAnimazione(durataTotaleDellaRullata);
 
-    // 2. Giri di potenza casuali (da 6 a 12 giri completi) + i gradi dello spicchio finale
     const giriCompletiCasuali = Math.floor(Math.random() * 7) + 6; 
     const gradiSpicchioCasuali = Math.floor(Math.random() * 360);
     
-    // Calcoliamo la nuova posizione finale assoluta
     const nuovaRotazione = rotazione + (giriCompletiCasuali * 360) + gradiSpicchioCasuali;
     setRotazione(nuovaRotazione);
 
-    // 3. Sblocca il bottone solo quando tutta l'animazione dinamica è terminata
     setTimeout(() => {
       setInGiramento(false);
     }, durataTotaleDellaRullata * 1000);
   };
 
-  const aggiungiColore = () => {
+  const aggiungereColore = () => {
     if (colori.length < 10) {
       setColori(COLORI_PREDEFINITI.slice(0, colori.length + 1));
     }
@@ -84,7 +79,7 @@ export default function GiraRuota({ onBack }) {
             disabled={colori.length <= 2 || inGiramento}
             style={{ ...btnStileModifica, backgroundColor: colori.length <= 2 ? '#e2e8f0' : '#ef4444', cursor: colori.length <= 2 || inGiramento ? 'not-allowed' : 'pointer' }}
           >
-            - Rimuovi
+            - 
           </button>
           
           <span style={{ color: '#0f172a', fontWeight: '800', fontSize: '1.05rem', textAlign: 'center', flex: '1', whiteSpace: 'nowrap', padding: '0 5px' }}>
@@ -92,18 +87,17 @@ export default function GiraRuota({ onBack }) {
           </span>
 
           <button 
-            onClick={aggiungiColore} 
+            onClick={aggiungereColore} 
             disabled={colori.length >= 10 || inGiramento}
             style={{ ...btnStileModifica, backgroundColor: colori.length >= 10 ? '#e2e8f0' : '#10b981', cursor: colori.length >= 10 || inGiramento ? 'not-allowed' : 'pointer' }}
           >
-            + Aggiungi
+            + 
           </button>
         </div>
 
         {/* CONTENITORE DELLA RUOTA */}
         <div style={{ position: 'relative', width: '240px', height: '240px', margin: '0 auto' }}>
           
-          {/* LA RUOTA CON TRANSIZIONE DINAMICA */}
           <div style={{
             width: '100%',
             height: '100%',
@@ -111,14 +105,13 @@ export default function GiraRuota({ onBack }) {
             border: '6px solid #1e293b',
             boxShadow: '0 8px 16px rgba(0,0,0,0.15)',
             transform: `rotate(${rotazione}deg)`,
-            // La durata (`durataAnimazione` secondi) e la frenata ora cambiano a ogni click!
             transition: `transform ${durataAnimazione}s cubic-bezier(0.25, 1, 0.5, 1)`,
             background: generaGradienteConico(),
             boxSizing: 'border-box'
           }}>
           </div>
 
-          {/* PERNO FRECCIA-A-GOCCIA (Punta verso l'alto a 0°) */}
+          {/* PERNO FRECCIA-A-GOCCIA */}
           <div style={{
             position: 'absolute',
             top: '50%',
@@ -151,14 +144,15 @@ export default function GiraRuota({ onBack }) {
   );
 }
 
+// STILI MODIFICATI PER RIMPICCIOLIRE LA LARGHEZZA
 const btnStileModifica = {
   border: 'none',
   color: 'white',
-  padding: '8px 12px',
+  padding: '8px 4px',       // Ridotto padding orizzontale da 12px a 4px
   borderRadius: '8px',
   fontWeight: 'bold',
   fontSize: '0.85rem',
   transition: 'all 0.2s ease',
   boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-  minWidth: '85px'
+  minWidth: '50px'          // Ridotta la larghezza minima da 85px a 50px
 };

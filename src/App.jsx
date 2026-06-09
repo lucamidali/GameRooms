@@ -9,6 +9,8 @@ import GiraRuota from './components/GiraRuota';
 import IndovinaBandiera from './components/IndovinaBandiera';
 import './App.css';
 
+const APP_VERSION = "V. 1.3.1";
+
 export default function App() {
   const [currentGame, setCurrentGame] = useState(null);
   const [showShareModal, setShowShareModal] = useState(false); // Stato per il popup del QR
@@ -55,7 +57,7 @@ export default function App() {
               style={{
                 position: 'absolute',
                 top: '0px',
-                left: '10px',
+                left: '5px',
                 background: 'rgba(255, 255, 255, 0.1)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 color: '#ffffff',
@@ -124,7 +126,7 @@ export default function App() {
               lineHeight: '1.2'
             }}>
               <span style={{ fontWeight: '500' }}>Created by Mida</span>
-              <span style={{ margin: '0', fontSize: '0.7rem' }}>V. 1.3.0</span>
+              <span style={{ margin: '0', fontSize: '0.7rem' }}>{APP_VERSION}</span>
             </div>
 
             {/* MODALE POPUP PER IL QR CODE */}
